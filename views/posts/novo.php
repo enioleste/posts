@@ -4,7 +4,7 @@
 	</head>
 	<body>
 			<h1>Faça sua postagem!<h1>
-			<form method="POST" action="novo.php">
+			<form method="POST" action="/index.php?controller=PostsController&action=novo">
 				<font size="5px">Autor:</font>
 				<input type="text" name="autor"/><br><br>
 				<font size="5px">Texto:</font><br>
