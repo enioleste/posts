@@ -16,14 +16,6 @@ class PostModel {
 			echo $e->getMessage();
 		}	
 	}
-
-	public function soma($n1,$n2){
-		echo $n1;
-		echo $n2;
-		$resultado = $n1 + $n2;
-		echo $resultado;
-	}
-
 	public function insertdb($nome,$texto,$data){
 	//Realizando o INSERT seguro com o PREPARE
 		$queryComPlaceHolder = "INSERT INTO post (nome,texto,data) VALUES ('%s','%s','%s')";
@@ -31,5 +23,14 @@ class PostModel {
 		$this->pdo->query($query);
 	}
 
-	
-}
+	public function selectdb(){
+		$querySelect =$this->pdo->PREPARE('SELECT * FROM post');
+		$querySelect->execute();
+		//$this->pdo->query($querySelect);
+		while ($linha=$querySelect->fetch(PDO::FETCH_ASSOC)) {
+			echo "Nome: ".$linha['nome'] ."</br>";
+			echo "Texto: ".$linha['texto'] ."</br>";
+			echo "Data: ".$linha['data'] ."</br></br>";
+		}
+	}
+}	

@@ -1,5 +1,5 @@
 <?php
-
+//cada método colocado aqui será um action diferente.
 class PostsController {
 	
 	public function novo(){
@@ -28,15 +28,20 @@ class PostsController {
 			$texto = $_POST ["text"]; 
 			$data = date('Y-m-d H:i:s');
 			require __DIR__ ."/../models/PostModel.php";
+
 			$cadastroPost = new PostModel();
 			$cadastroPost->conectiondb();
 			$cadastroPost->insertdb($nome,$texto,$data);
 		}
 		require __DIR__."/../views/posts/novo.php";
+	}
 
-		//$num = 2;
-		//$num4 = 3;
-		//$CadastroPost->soma(3,4);
+	public function listagem(){	
+		require __DIR__."/../views/posts/listagem.php";
+		require __DIR__ ."/../models/PostModel.php";
+		$listagemPost = new PostModel();
+		$listagemPost->conectiondb();
+		$listagemPost->selectdb();
 	}
 
 }
