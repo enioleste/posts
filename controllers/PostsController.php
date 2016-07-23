@@ -37,11 +37,11 @@ class PostsController {
 	}
 
 	public function listagem(){	
-		require __DIR__."/../views/posts/listagem.php";
 		require __DIR__ ."/../models/PostModel.php";
 		$listagemPost = new PostModel();
 		$listagemPost->conectiondb();
-		$listagemPost->selectdb();
+		$result = $listagemPost->selectdb();
+		require __DIR__."/../views/posts/listagem.php";
 	}
 
 }

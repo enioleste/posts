@@ -17,20 +17,17 @@ class PostModel {
 		}	
 	}
 	public function insertdb($nome,$texto,$data){
-	//Realizando o INSERT seguro com o PREPARE
+	//Realizando o INSERT seguro com o prepare
 		$queryComPlaceHolder = "INSERT INTO post (nome,texto,data) VALUES ('%s','%s','%s')";
 		$query = sprintf($queryComPlaceHolder,$nome,$texto,$data);
 		$this->pdo->query($query);
 	}
 
 	public function selectdb(){
-		$querySelect =$this->pdo->PREPARE('SELECT * FROM post');
+		$querySelect = $this->pdo->prepare('SELECT * FROM post');
 		$querySelect->execute();
-		//$this->pdo->query($querySelect);
-		while ($linha=$querySelect->fetch(PDO::FETCH_ASSOC)) {
-			echo "Nome: ".$linha['nome'] ."</br>";
-			echo "Texto: ".$linha['texto'] ."</br>";
-			echo "Data: ".$linha['data'] ."</br></br>";
-		}
+		$result = $querySelect->fetchAll();
+
+		return $result;
 	}
 }	
