@@ -26,8 +26,10 @@ class PostModel {
 	public function selectdb(){
 		$querySelect = $this->pdo->prepare('SELECT * FROM post');
 		$querySelect->execute();
+		//O metodo fetchall tras todos os dados cadastrados no banco na tabela post
 		$result = $querySelect->fetchAll();
-
+		//Fiz o return para retornar todos os dados da query qye eu fiz, essa variavel sera usada
+		//em minha view para fazer a exibição.
 		return $result;
 	}
 }	

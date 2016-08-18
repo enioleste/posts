@@ -5,8 +5,8 @@
 	<body>
 
 	<h1>Lista de Posts</h1>
-	<form method="POST" action="/index.php?controller=PostsController&action=listagem">
-		<input type="submit" name=RealizarPost" value="Novo Post"><br><br>
+	<form method="POST" action="/index.php?controller=PostsController&action=novo">
+		<input type="submit" name="RealizarPost" value="Novo Post"><br><br>
 	</form>
 
 
@@ -17,7 +17,9 @@
 			<td width="200">Data/Hora</td>
 		</tr>
 	<?php 
-
+	//Realizando a interação com o foreach que vai percorrer todo o meu array $result, cada interação ele vai adicionando os dados na tabela.
+	//$result = valor.
+	//$iten = chave.
 		foreach ($result as $iten) {
 			$print = "<tr>
 						<td width=\"200\">". $iten["nome"] ."</td>

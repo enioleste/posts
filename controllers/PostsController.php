@@ -41,6 +41,7 @@ class PostsController {
 		$listagemPost = new PostModel();
 		$listagemPost->conectiondb();
 		$result = $listagemPost->selectdb();
+		//realizei a inclusao do arquivo da view, a variavel que contem os dados do select passa a existir na minha view, ou seja, ela recebe os dados.
 		require __DIR__."/../views/posts/listagem.php";
 	}
 
